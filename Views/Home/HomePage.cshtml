@@ -1,0 +1,212 @@
+﻿@model CreateExamApp.Models.Exam
+
+@{
+    ViewData["Title"] = "HomePage";
+}
+
+<body>
+    <div>
+        <h2>Sınav Oluştur</h2>
+    </div>
+
+    <hr />
+
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <label> Başlık Seçiniz </label>
+        </div>
+        <div class="col-md-6">
+            <select name="dowList" id="dowList" onchange="SelectedTitle()" class="form-control">
+                <option value="" disabled selected>--- Lütfen Başlık Seçiniz ---</option>
+                @for (int i = 0; i < 5; i++)
+                {
+                    <option value="@i">@ViewBag.Collection[i]</option>
+                }
+
+            </select>
+        </div>
+        <div class="col-md-6">
+            <a asp-controller="Exam" asp-action="ExamIndex" style="float:right; font-size:20px;">Sınavları Göster</a>
+        </div>
+    </div>
+
+        <br /><h4 id="context" style="margin-top:50px;"></h4>
+
+        <div id="form" style="border: 1px solid black; margin-top:30px; display:none;">
+
+            <div style="margin: 15px; padding: 5px;" class="form-group">
+                <input asp-for="question1" type="text" placeholder="Soru 1" style="height:50px; margin:5px;" class="form-control col-md-12" />
+                <input asp-for="q1a" type="text" value="A)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q1b" type="text" value="B)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q1c" type="text" value="C)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q1d" type="text" value="D)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <center>
+                    <select id="q1OptionValue" onchange="selectedq1()" class="form-control" style="margin: 5px; width: 30%;">
+                        <option value="" disabled selected>--- Doğru Cevabı Seçiniz ---</option>
+                        <option value="q1a">A</option>
+                        <option value="q1b">B</option>
+                        <option value="q1c">C</option>
+                        <option value="q1d">D</option>
+                    </select>
+                </center>
+            </div>
+
+            <div style="margin: 15px; padding: 5px;" class="form-group">
+                <input asp-for="question2" type="text" placeholder="Soru 2" style="height:50px;margin:5px;" class="form-control col-md-12" />
+                <input asp-for="q2a" type="text" value="A)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q2b" type="text" value="B)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q2c" type="text" value="C)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q2d" type="text" value="D)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <center>
+                    <select id="q2OptionValue" onchange="selectedq2()" class="form-control" style="margin: 5px; width: 30%;">
+                        <option value="" disabled selected>--- Doğru Cevabı Seçiniz ---</option>
+                        <option value="q2a">A</option>
+                        <option value="q2b">B</option>
+                        <option value="q2c">C</option>
+                        <option value="q2d">D</option>
+                    </select>
+                </center>
+            </div>
+
+            <div style="margin: 15px; padding: 5px;" class="form-group">
+                <input asp-for="question3" type="text" placeholder="Soru 3" style="height:50px; margin:5px;" class="form-control col-md-12" />
+                <input asp-for="q3a" type="text" value="A)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6"/>
+                <input asp-for="q3b" type="text" value="B)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q3c" type="text" value="C)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q3d" type="text" value="D)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <center>
+                    <select id="q3OptionValue" onchange="selectedq3()" class="form-control" style="margin: 5px; width: 30%;">
+                        <option value="" disabled selected>--- Doğru Cevabı Seçiniz ---</option>
+                        <option value="q3a">A</option>
+                        <option value="q3b">B</option>
+                        <option value="q3c">C</option>
+                        <option value="q3d">D</option>
+                    </select>
+                </center>
+            </div>
+
+            <div style="margin: 15px; padding: 5px;" class="form-group">
+                <input asp-for="question4" type="text" placeholder="Soru 4" style="height:50px; margin:5px;" class="form-control col-md-12" />
+                <input asp-for="q4a" type="text" value="A)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q4b" type="text" value="B)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q4c" type="text" value="C)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <input asp-for="q4d" type="text" value="D)" style="width:49%; height:30px; margin:5px;" class="form-control col-md-6" />
+                <center>
+                    <select id="q4OptionValue" onchange="selectedq4()" class="form-control" style="margin: 5px; width: 30%;">
+                        <option value="" disabled selected>--- Doğru Cevabı Seçiniz ---</option>
+                        <option value="q4a">A</option>
+                        <option value="q4b">B</option>
+                        <option value="q4c">C</option>
+                        <option value="q4d">D</option>
+                    </select>
+                </center>
+            </div>
+
+            <input type="hidden" asp-for="title" />
+            <input type="hidden" asp-for="q1Option" />
+            <input type="hidden" asp-for="q1Option" />
+            <input type="hidden" asp-for="q1Option" />
+            <input type="hidden" asp-for="q1Option" />
+
+            <center>
+                <input id="createExam" type="submit" value="SINAVI OLUŞTUR" style="width:40%; height: 40px; margin-bottom:10px;" class="form-control btn btn-primary" />
+            </center>
+
+        </div>
+        <div id="yazarMessage"></div>
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+<script>
+    var strTitle;
+    var strq1Option;
+    var strq2Option;
+    var strq3Option;
+    var strq4Option;
+    var context;
+    function SelectedTitle() {
+        var index = $("#dowList").val();
+        var array = @Html.Raw(Json.Serialize(@ViewBag.Context));
+        $("#context").text(array[index]);
+        $("#title").val(index);
+        context = array[index];
+
+        var e = document.getElementById("dowList");
+        strTitle = e.options[e.selectedIndex].text;
+
+        document.getElementById("form").style.display = "block"
+    }
+
+    function selectedq1() {
+        $("#q1Option").text($("#q1OptionValue").val());
+        var e = document.getElementById("q1OptionValue");
+        strq1Option = e.options[e.selectedIndex].value;
+    }
+
+    function selectedq2() {
+        $("#q2Option").text($("#q2OptionValue").val());
+        var e = document.getElementById("q2OptionValue");
+        strq2Option = e.options[e.selectedIndex].value;
+    }
+
+    function selectedq3() {
+        $("#q2Option").text($("#q3OptionValue").val());
+        var e = document.getElementById("q3OptionValue");
+        strq3Option = e.options[e.selectedIndex].value;
+    }
+
+    function selectedq4() {
+        $("#q2Option").text($("#q4OptionValue").val());
+        var e = document.getElementById("q4OptionValue");
+        strq4Option = e.options[e.selectedIndex].value;
+    }
+    
+    $(document).ready(function () {
+        
+        $("#createExam").click(function () {
+            var data = JSON.stringify({
+                context: context,
+                title: strTitle,
+                question1: $("#question1").val(),
+                q1a: $("#q1a").val(),
+                q1b: $("#q1b").val(),
+                q1c: $("#q1c").val(),
+                q1d: $("#q1d").val(),
+                q1Option: strq1Option,
+
+                question2: $("#question2").val(),
+                q2a: $("#q2a").val(),
+                q2b: $("#q2b").val(),
+                q2c: $("#q2c").val(),
+                q2d: $("#q2d").val(),
+                q2Option: strq2Option,
+
+                question3: $("#question3").val(),
+                q3a: $("#q3a").val(),
+                q3b: $("#q3b").val(),
+                q3c: $("#q3c").val(),
+                q3d: $("#q3d").val(),
+                q3Option: strq3Option,
+
+                question4: $("#question4").val(),
+                q4a: $("#q4a").val(),
+                q4b: $("#q4b").val(),
+                q4c: $("#q4c").val(),
+                q4d: $("#q4d").val(),
+                q4Option: strq4Option
+            });
+
+            console.log(data);
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/AddExam',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: data,
+                success: function () {
+                    alert("Sınav başarıyla oluşturuldu!");
+                }
+            });
+        });
+    });
+</script>

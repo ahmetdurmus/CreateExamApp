@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewData["Title"] = "Exam";
+}
+
+<body>
+    <div class="col-md-12">
+        <h3 style="display:inline">@ViewBag.TitleExam</h3>
+        <a asp-controller="Home" asp-action="HomePage" style="float:right; font-size:20px">Sınav Oluştur</a>
+    </div>
+
+    <hr />
+
+    <div class="col-md-12">
+        <p>@ViewBag.Context</p>
+    </div>
+    <div class="col-md-6" style="margin-top: 15px;">
+        <p> 1) @ViewBag.Question1 </p>
+        <input type="button" id="q1a" value="@ViewBag.q1a" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q1b" value="@ViewBag.q1b" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q1c" value="@ViewBag.q1c" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q1d" value="@ViewBag.q1d" class="form-control" style="margin-bottom: 5px;"/>
+
+        <p style="margin-top: 15px;"> 3) @ViewBag.Question3 </p>
+        <input type="button" id="q3a" value="@ViewBag.q3a" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q3b" value="@ViewBag.q3b" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q3c" value="@ViewBag.q3c" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q3d" value="@ViewBag.q3d" class="form-control" style="margin-bottom: 5px;"/>
+    </div>
+
+    <div class="col-md-6" style="margin-top: 15px;">
+        <p> 2) @ViewBag.Question2 </p>
+        <input type="button" id="q2a" value="@ViewBag.q2a" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q2b" value="@ViewBag.q2b" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q2c" value="@ViewBag.q2c" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q2d" value="@ViewBag.q2d" class="form-control" style="margin-bottom: 5px;"/>
+
+        <p style="margin-top: 15px;"> 4) @ViewBag.Question4 </p>
+        <input type="button" id="q4a" value="@ViewBag.q4a" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q4b" value="@ViewBag.q4b" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q4c" value="@ViewBag.q4c" class="form-control" style="margin-bottom: 5px;"/>
+        <input type="button" id="q4d" value="@ViewBag.q4d" class="form-control" style="margin-bottom: 5px;"/>
+    </div>
+    <center>
+        <button id="doneExam" style="width:40%; height: 40px; margin-top:10px;" class="form-control btn btn-primary"> SINAVI TAMAMLA </button>
+    </center>
+</body>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+<script>
+    var realq1 = @Html.Raw(Json.Serialize(@ViewBag.option1));
+    var realq2 = @Html.Raw(Json.Serialize(@ViewBag.option2));
+    var realq3 = @Html.Raw(Json.Serialize(@ViewBag.option3));
+    var realq4 = @Html.Raw(Json.Serialize(@ViewBag.option4));
+
+    var selectedOptions = ["", "", "", ""];
+    var realOptions = [realq1, realq2, realq3, realq4];
+
+    $("#q1a").click(function () {
+        document.getElementById("q1a").style.backgroundColor = "#bebebe";
+        document.getElementById("q1b").style.backgroundColor = "#ffffff";
+        document.getElementById("q1c").style.backgroundColor = "#ffffff";
+        document.getElementById("q1d").style.backgroundColor = "#ffffff";
+        selectedOptions[0] = "q1a";
+    });
+    $("#q1b").click(function () {
+        document.getElementById("q1b").style.backgroundColor = "#bebebe";
+        document.getElementById("q1a").style.backgroundColor = "#ffffff";
+        document.getElementById("q1c").style.backgroundColor = "#ffffff";
+        document.getElementById("q1d").style.backgroundColor = "#ffffff";
+        selectedOptions[0] = "q1b";
+    });
+    $("#q1c").click(function () {
+        document.getElementById("q1c").style.backgroundColor = "#bebebe";
+        document.getElementById("q1b").style.backgroundColor = "#ffffff";
+        document.getElementById("q1a").style.backgroundColor = "#ffffff";
+        document.getElementById("q1d").style.backgroundColor = "#ffffff";
+        selectedOptions[0] = "q1c";
+    });
+    $("#q1d").click(function () {
+        document.getElementById("q1d").style.backgroundColor = "#bebebe";
+        document.getElementById("q1b").style.backgroundColor = "#ffffff";
+        document.getElementById("q1c").style.backgroundColor = "#ffffff";
+        document.getElementById("q1a").style.backgroundColor = "#ffffff";
+        selectedOptions[0] = "q1d";
+    });
+
+    $("#q2a").click(function () {
+        document.getElementById("q2a").style.backgroundColor = "#bebebe";
+        document.getElementById("q2b").style.backgroundColor = "#ffffff";
+        document.getElementById("q2c").style.backgroundColor = "#ffffff";
+        document.getElementById("q2d").style.backgroundColor = "#ffffff";
+        selectedOptions[1] = "q2a";
+    });
+    $("#q2b").click(function () {
+        document.getElementById("q2b").style.backgroundColor = "#bebebe";
+        document.getElementById("q2a").style.backgroundColor = "#ffffff";
+        document.getElementById("q2c").style.backgroundColor = "#ffffff";
+        document.getElementById("q2d").style.backgroundColor = "#ffffff";
+        selectedOptions[1] = "q2b";
+    });
+    $("#q2c").click(function () {
+        document.getElementById("q2c").style.backgroundColor = "#bebebe";
+        document.getElementById("q2b").style.backgroundColor = "#ffffff";
+        document.getElementById("q2a").style.backgroundColor = "#ffffff";
+        document.getElementById("q2d").style.backgroundColor = "#ffffff";
+        selectedOptions[1] = "q2c";
+    });
+    $("#q2d").click(function () {
+        document.getElementById("q2d").style.backgroundColor = "#bebebe";
+        document.getElementById("q2b").style.backgroundColor = "#ffffff";
+        document.getElementById("q2c").style.backgroundColor = "#ffffff";
+        document.getElementById("q2a").style.backgroundColor = "#ffffff";
+        selectedOptions[1] = "q2d";
+    });
+
+    $("#q3a").click(function () {
+        document.getElementById("q3a").style.backgroundColor = "#bebebe";
+        document.getElementById("q3b").style.backgroundColor = "#ffffff";
+        document.getElementById("q3c").style.backgroundColor = "#ffffff";
+        document.getElementById("q3d").style.backgroundColor = "#ffffff";
+        selectedOptions[2] = "q3a";
+    });
+    $("#q3b").click(function () {
+        document.getElementById("q3b").style.backgroundColor = "#bebebe";
+        document.getElementById("q3a").style.backgroundColor = "#ffffff";
+        document.getElementById("q3c").style.backgroundColor = "#ffffff";
+        document.getElementById("q3d").style.backgroundColor = "#ffffff";
+        selectedOptions[2] = "q3b";
+    });
+    $("#q3c").click(function () {
+        document.getElementById("q3c").style.backgroundColor = "#bebebe";
+        document.getElementById("q3b").style.backgroundColor = "#ffffff";
+        document.getElementById("q3a").style.backgroundColor = "#ffffff";
+        document.getElementById("q3d").style.backgroundColor = "#ffffff";
+        selectedOptions[2] = "q3c";
+    });
+    $("#q3d").click(function () {
+        document.getElementById("q3d").style.backgroundColor = "#bebebe";
+        document.getElementById("q3b").style.backgroundColor = "#ffffff";
+        document.getElementById("q3c").style.backgroundColor = "#ffffff";
+        document.getElementById("q3a").style.backgroundColor = "#ffffff";
+        selectedOptions[2] = "q3d";
+    });
+
+    $("#q4a").click(function () {
+        document.getElementById("q4a").style.backgroundColor = "#bebebe";
+        document.getElementById("q4b").style.backgroundColor = "#ffffff";
+        document.getElementById("q4c").style.backgroundColor = "#ffffff";
+        document.getElementById("q4d").style.backgroundColor = "#ffffff";
+        selectedOptions[3] = "q4a";
+    });
+    $("#q4b").click(function () {
+        document.getElementById("q4b").style.backgroundColor = "#bebebe";
+        document.getElementById("q4a").style.backgroundColor = "#ffffff";
+        document.getElementById("q4c").style.backgroundColor = "#ffffff";
+        document.getElementById("q4d").style.backgroundColor = "#ffffff";
+        selectedOptions[3] = "q4b";
+    });
+    $("#q4c").click(function () {
+        document.getElementById("q4c").style.backgroundColor = "#bebebe";
+        document.getElementById("q4b").style.backgroundColor = "#ffffff";
+        document.getElementById("q4a").style.backgroundColor = "#ffffff";
+        document.getElementById("q4d").style.backgroundColor = "#ffffff";
+        selectedOptions[3] = "q4c";
+    });
+    $("#q4d").click(function () {
+        document.getElementById("q4d").style.backgroundColor = "#bebebe";
+        document.getElementById("q4b").style.backgroundColor = "#ffffff";
+        document.getElementById("q4c").style.backgroundColor = "#ffffff";
+        document.getElementById("q4a").style.backgroundColor = "#ffffff";
+        selectedOptions[3] = "q4d";
+    });
+
+    $("#doneExam").click(function () {
+        var i;
+        for (i = 0; i < 4; i++) {
+            if (selectedOptions[i] == realOptions[i])
+                document.getElementById(selectedOptions[i]).style.backgroundColor = "#4ffa56";
+            else
+                document.getElementById(selectedOptions[i]).style.backgroundColor = "#ee1616";
+        }
+    });
+</script>
+

@@ -1,0 +1,23 @@
+﻿@using CreateExamApp.Models
+@model IEnumerable<Exam>
+
+@{
+    ViewData["Title"] = "ExamIndex";
+}
+
+<h2>Sınavlar</h2>
+
+<hr />
+
+<div style="border:1px solid black; height:35px;">
+    <h4 style="margin-left: 20px;"> Başlık </h4>
+</div>
+
+@foreach (var item in Model)
+{
+    <div style="margin-top:10px; border-bottom: 1px solid black">
+        <a id="@item.Id" href="/Exam/Exam/@item.Id" style="margin-left:20px;">@item.title</a>
+        <a style="float:right; margin-right:100px;" href="/Exam/RemoveExam/@item.Id">Sil</a>
+    </div>
+}
+
